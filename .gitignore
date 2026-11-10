@@ -1,0 +1,5 @@
+node_modules/
+junit/
+test-results/
+playwright-report/
+.lifecycle/

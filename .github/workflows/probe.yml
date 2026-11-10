@@ -1,0 +1,33 @@
+name: probe
+
+on:
+  pull_request:
+    paths: [.github/workflows/probe.yml]
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_TOKEN_ADRIANGORNY }}
+      SHOW: let s='';process.stdin.on('data',d=>s+=d).on('end',()=>{try{const j=JSON.parse(s);console.log('is_error='+j.is_error,'reason='+j.terminal_reason,'turns='+j.num_turns,'text='+String(j.result).slice(0,300))}catch{console.log('raw='+s.slice(0,300))}})
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - run: npm install -g @anthropic-ai/claude-code && claude --version
+      - name: Token length and shape
+        run: |
+          printf 'length=%s\n' "${#CLAUDE_CODE_OAUTH_TOKEN}"
+          case "$CLAUDE_CODE_OAUTH_TOKEN" in sk-ant-oat*) echo "prefix=ok" ;; *) echo "prefix=unexpected" ;; esac
+          case "$CLAUDE_CODE_OAUTH_TOKEN" in *[[:space:]]*) echo "whitespace=yes" ;; *) echo "whitespace=no" ;; esac
+      - name: Plain prompt
+        run: claude -p "Reply with the single word ok" --max-turns 1 --output-format json | node -e "$SHOW"
+      - name: Plugin skill
+        run: |
+          claude plugin marketplace add https://github.com/serio-ngo/serio-focus.git
+          claude plugin install serio-focus@serio-ngo
+          claude -p "/serio-focus:spec-review 2" --max-turns 1 --allowedTools "Read,Glob,Grep" --output-format json | node -e "$SHOW"

@@ -41,3 +41,5 @@ The app is one page with a form and one pure function, `src/sum.mjs`.
 
 Labels: `spec-review`, `spec-ok`, `needs-human`. Rulesets on `main`: `agent-gate` (pull request, code-owner
 approval of the latest push) and `human-merge` (only a person updates `main`, through a pull request).
+
+Probe: the gate treats this branch as "not a lifecycle pull request".

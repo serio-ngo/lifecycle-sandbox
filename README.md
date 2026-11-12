@@ -1,7 +1,8 @@
 # lifecycle-sandbox
 
 Proving ground for the Serio AI dev lifecycle and the first hour of a new developer.
-Design: `serio-ngo/ops`, `lifecycle/DESIGN.md`. Public repository: no secret, no personal data.
+Scripts, skills and workflows: [serio-focus](https://github.com/serio-ngo/serio-focus). Apache-2.0. No secret, no personal data.
+Proven so far: one task from spec to merge (#2).
 
 The app is one page with a form and one pure function, `src/sum.mjs`.
 
@@ -23,7 +24,7 @@ The app is one page with a form and one pure function, `src/sum.mjs`.
 | 5 | you | Read the tests; submit a review whose text starts with `tests-ok` |
 | 6 | agent | Code that turns the tests green; the pull request is marked ready |
 | 7 | CI | Test lock and the acceptance report: one row per criterion |
-| 8 | you | Approve the latest push and merge |
+| 8 | you | Approve the latest push; merge with `gh pr merge <PR> --squash --admin` or the bypass box: `human-merge` admits a person only through the bypass |
 
 ## First hour
 
@@ -41,3 +42,9 @@ The app is one page with a form and one pure function, `src/sum.mjs`.
 
 Labels: `spec-review`, `spec-ok`, `needs-human`. Rulesets on `main`: `agent-gate` (pull request, code-owner
 approval of the latest push) and `human-merge` (only a person updates `main`, through a pull request).
+
+## Use it in your organisation
+
+1. Create a repository from this template; keep `CODEOWNERS`, the labels and both rulesets.
+2. Create a GitHub App (Contents, Pull requests, Issues: write; Checks, Actions: read); set `AGENT_APP_ID`, `AGENT_APP_KEY`.
+3. Each developer: `claude setup-token`, saved as the secret `CLAUDE_TOKEN_<LOGIN>`, login in capitals.

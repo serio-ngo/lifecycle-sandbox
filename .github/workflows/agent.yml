@@ -23,8 +23,5 @@ permissions:
 
 jobs:
   agent:
-    uses: serio-ngo/serio-focus/.github/workflows/lifecycle-agent.yml@lifecycle
-    with:
-      focus_ref: lifecycle
-      models: '{"spec-review":"opus","write-tests":"sonnet","deliver":"sonnet","pr-loop":"sonnet"}'
+    uses: serio-ngo/serio-focus/.github/workflows/lifecycle-agent.yml@main
     secrets: inherit

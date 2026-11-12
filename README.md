@@ -1,7 +1,8 @@
 # lifecycle-sandbox
 
 Proving ground for the Serio AI dev lifecycle and the first hour of a new developer.
-Design: `serio-ngo/ops`, `lifecycle/DESIGN.md`. Public repository: no secret, no personal data.
+Scripts, skills and workflows: [serio-focus](https://github.com/serio-ngo/serio-focus). Apache-2.0. No secret, no personal data.
+Proven so far: one task from spec to merge (#2).
 
 The app is one page with a form and one pure function, `src/sum.mjs`.
 
@@ -19,8 +20,8 @@ The app is one page with a form and one pure function, `src/sum.mjs`.
 | 1 | you | New issue from the **Spec** form; assign yourself; add the label `spec-review` |
 | 2 | agent | Comments the verdict, questions and criteria `AC1…ACn` |
 | 3 | you | Edit the issue until the verdict is `ready`; add `spec-ok` |
-| 4 | agent | Draft pull request from `agent/<N>-<slug>` with one failing test per criterion |
-| 5 | you | Read the tests; submit a review whose text starts with `tests-ok` |
+| 4 | agent | Draft pull request from `agent/<N>-<slug>`: the repository skill the task needs, `.claude/skills/<area>/SKILL.md`, and one failing test per criterion |
+| 5 | you | Read the skill and the tests; submit a review whose text starts with `tests-ok`: it locks both |
 | 6 | agent | Code that turns the tests green; the pull request is marked ready |
 | 7 | CI | Test lock and the acceptance report: one row per criterion |
 | 8 | you | Approve the latest push and merge |
@@ -40,4 +41,10 @@ The app is one page with a form and one pure function, `src/sum.mjs`.
 | An empty field shows "Enter both numbers" instead of a result | e2e |
 
 Labels: `spec-review`, `spec-ok`, `needs-human`. Rulesets on `main`: `agent-gate` (pull request, code-owner
-approval of the latest push) and `human-merge` (only a person updates `main`, through a pull request).
+approval of the latest push) and `human-merge` (only people update `main`: their entry is in bypass mode `exempt`, no App has one).
+
+## Use it in your organisation
+
+1. Create a repository from this template; keep `CODEOWNERS`, the labels and both rulesets, with the people entry in bypass mode `exempt`.
+2. Create a GitHub App (Contents, Pull requests, Issues: write; Checks, Actions: read); set `AGENT_APP_ID`, `AGENT_APP_KEY`.
+3. Each developer: `claude setup-token`, saved as the secret `CLAUDE_TOKEN_<LOGIN>`, login in capitals.

@@ -20,7 +20,7 @@ The app is one page with a form and one pure function, `src/sum.mjs`.
 | 1 | you | New issue from the **Spec** form; assign yourself; add the label `spec-review` |
 | 2 | agent | Comments the verdict, questions and criteria `AC1…ACn` |
 | 3 | you | Edit the issue until the verdict is `ready`; add `spec-ok` |
-| 4 | agent | Draft pull request from `agent/<N>-<slug>`: the repository skill the task needs, `.claude/skills/<area>/SKILL.md`, and one failing test per criterion |
+| 4 | agent | Draft pull request from `agent/<N>-<slug>`: the repository skill the task needs, `.agents/skills/<area>/SKILL.md`, and one failing test per criterion |
 | 5 | you | Read the skill and the tests; submit a review whose text starts with `tests-ok`: it locks both |
 | 6 | agent | Code that turns the tests green; the pull request is marked ready |
 | 7 | CI | Test lock and the acceptance report: one row per criterion |

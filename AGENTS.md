@@ -1,6 +1,6 @@
 # AGENTS.md
 
-Shared rules: the lifecycle of `serio-ngo/ops` `lifecycle/DESIGN.md`. This repository is public: no secret, no personal data.
+Shared rules: the lifecycle in [serio-focus](https://github.com/serio-ngo/serio-focus). This repository is public: no secret, no personal data.
 
 ## Code Review Rules
 

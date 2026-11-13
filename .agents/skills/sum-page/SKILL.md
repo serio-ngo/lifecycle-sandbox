@@ -9,6 +9,8 @@ description: Use when changing or testing the sum page (index.html, src/sum.mjs,
 |---|---|
 | Page `/` (`index.html`) | Inputs labelled "First number" and "Second number" (names `a`, `b`); buttons "Add" (submit) and "Clear" (reset); the result is `output aria-live="polite"` (role `status`) |
 | `sum(a, b)` in `src/sum.mjs` | Pure; takes two numeric strings; returns their sum as a string with two decimals: `sum('2', '3')` is `'5.00'` |
+| Sign of `sum(a, b)` | A negative sum keeps its minus sign: `sum('-2', '-3')` is `'-5.00'`, `sum('-0.01', '0')` is `'-0.01'` |
+| Zero of `sum(a, b)` | A sum that rounds to zero at two decimals is `'0.00'` with no minus sign: `sum('-0.001', '0')` is `'0.00'` |
 | `src/app.mjs` | On submit shows `sum(a, b)` in the result; on reset empties the result |
 
 | Command | Runs |

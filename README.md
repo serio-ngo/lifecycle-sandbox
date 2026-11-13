@@ -1,7 +1,7 @@
 # lifecycle-sandbox
 
 A toy app to try the [serio-focus](https://github.com/serio-ngo/serio-focus) AI dev lifecycle on, before a real repository.
-Its README has the steps of one task. Apache-2.0. No secret, no personal data.
+Apache-2.0. No secret, no personal data.
 
 The app is one page with a form and one pure function, `src/sum.mjs`.
 
@@ -11,6 +11,19 @@ The app is one page with a form and one pure function, `src/sum.mjs`.
 | `npm test` | Unit tests, `tests/` |
 | `npx playwright install chromium`, then `npm run e2e` | e2e tests, `e2e/` |
 | `npm run serve` | The page at <http://127.0.0.1:4173> |
+
+## One task
+
+| Step | Who | Act |
+|---|---|---|
+| 1 | you | New issue from the **Spec** form; assign yourself; add the label `spec-review` |
+| 2 | agent | Comments the verdict, questions and criteria `AC1…ACn` |
+| 3 | you | Edit the issue until the verdict is `ready`; add `spec-ok` |
+| 4 | agent | Draft pull request from `agent/<N>-<slug>`: the repository skill the task needs, `.agents/skills/<area>/SKILL.md`, and one failing test per criterion |
+| 5 | you | Read the skill and the tests; submit a review whose text starts with `tests-ok`: it locks both |
+| 6 | agent | Code that turns the tests green; the pull request is marked ready |
+| 7 | CI | Test lock and the acceptance report: one row per criterion |
+| 8 | you | Approve the latest push and merge |
 
 ## First hour
 

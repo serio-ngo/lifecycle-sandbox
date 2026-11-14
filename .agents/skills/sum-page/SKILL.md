@@ -16,5 +16,7 @@ description: Use when changing or testing the sum page (index.html, src/sum.mjs,
 | `npm test` | Unit tests `tests/*.test.mjs` (node --test) |
 | `npm run e2e` | E2e tests `e2e/*.spec.mjs` (Playwright; it starts `node scripts/serve.mjs` on 127.0.0.1:4173) |
 
+- A negative sum keeps its minus sign: `sum('-2', '-3')` is `'-5.00'`, `sum('-0.01', '0')` is `'-0.01'`.
+- A sum that rounds to zero at two decimals is `'0.00'`, never `'-0.00'`: `sum('-0.001', '0')` is `'0.00'`.
 - Test title: `#<N> AC<n>: …`.
 - Locators: `getByLabel('First number')`, `getByLabel('Second number')`, `getByRole('button', { name: 'Add' })`, `getByRole('status')`.

@@ -29,7 +29,8 @@ The app is one page with a form and one pure function, `src/sum.mjs`.
 
 1. Install the plugin: `claude plugin marketplace add serio-ngo/serio-focus`, then `claude plugin install serio-focus@serio-ngo`.
 2. Pick a toy task and write its spec from the **Spec** issue form.
-3. Run each stage by hand in Claude Code: `/serio-focus:spec-review <issue>`, `/serio-focus:write-tests <issue>`,
+3. Run each stage by hand in Claude Code, on an issue without an assignee (an assigned issue also starts the agent on GitHub
+   at each label): `/serio-focus:spec-review <issue>`, `/serio-focus:write-tests <issue>`,
    `/serio-focus:deliver task issue #<issue> on pull request #<PR>`, `/serio-focus:gate <PR>`.
 4. Run a second task through the labels only: `spec-review`, `spec-ok`, then a review that starts with `tests-ok`.
 

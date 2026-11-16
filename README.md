@@ -42,7 +42,7 @@ The app is one page with a form and one pure function, `src/sum.mjs`.
 
 ## Use it in your organisation
 
-1. Create a repository from this template. Keep `CODEOWNERS`, the labels `spec-review`, `spec-ok`, `needs-human`, and two
+1. Create a public repository from this template (a private repository of a free organisation cannot have rulesets: run it by hand, as in First hour). Keep `CODEOWNERS`, the labels `spec-review`, `spec-ok`, `needs-human`, and two
    rulesets on `main`: `agent-gate` (pull request, code-owner approval of the latest push) and `human-merge` (only people
    update `main`: their entry is in bypass mode `exempt`, no App has one).
 2. Create a GitHub App (Contents, Pull requests, Issues: write; Checks, Actions: read); set `AGENT_APP_ID`, `AGENT_APP_KEY`.

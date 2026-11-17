@@ -6,7 +6,7 @@ on:
   pull_request_review:
     types: [submitted]
   workflow_run:
-    workflows: [verify]
+    workflows: [lifecycle gate, verify, ci, Validate, verify and publish]
     types: [completed]
 
 concurrency:
@@ -23,8 +23,5 @@ permissions:
 
 jobs:
   agent:
-    uses: serio-ngo/serio-focus/.github/workflows/lifecycle-agent.yml@d7df623a96c2016551e217ec23d25741da4a06ea
-    with:
-      focus_ref: d7df623a96c2016551e217ec23d25741da4a06ea
-      orchestrator: opus
+    uses: serio-ngo/serio-focus/.github/workflows/lifecycle-agent.yml@main
     secrets: inherit

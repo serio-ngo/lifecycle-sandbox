@@ -1,0 +1,16 @@
+name: lifecycle gate
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+  packages: read
+  issues: read
+  pull-requests: write
+
+jobs:
+  gate:
+    uses: serio-ngo/serio-focus/.github/workflows/lifecycle-gate.yml@main

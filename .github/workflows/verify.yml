@@ -13,4 +13,6 @@ permissions:
 
 jobs:
   gate:
-    uses: serio-ngo/serio-focus/.github/workflows/lifecycle-gate.yml@main
+    uses: serio-ngo/serio-focus/.github/workflows/lifecycle-gate.yml@d7df623a96c2016551e217ec23d25741da4a06ea
+    with:
+      focus_ref: d7df623a96c2016551e217ec23d25741da4a06ea

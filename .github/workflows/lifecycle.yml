@@ -1,4 +1,4 @@
-name: verify
+name: lifecycle gate
 
 on:
   pull_request:

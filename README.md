@@ -38,7 +38,7 @@ The app is one page with a form and one pure function, `src/sum.mjs`.
 |---|---|
 | A "Clear" button empties both fields and the result | e2e |
 | The result shows two decimals: 2 and 3 give `5.00` | unit, e2e |
-| An empty field shows "Enter both numbers" instead of a result | e2e |
+| An empty field shows "Fill in both fields" instead of a result | e2e |
 
 ## Use it in your organisation
 

@@ -1,32 +1,29 @@
 import { expect, test } from '@playwright/test';
+import { emptyFieldMessage } from '../src/messages.mjs';
 
-test('#13 AC1: both fields empty shows Enter both numbers', async ({ page }) => {
+test('Add with an empty field shows the empty-field message in the result', async ({ page }) => {
   await page.goto('/');
   await page.getByRole('button', { name: 'Add' }).click();
-  await expect(page.getByRole('status')).toHaveText('Enter both numbers');
-});
-
-test('#13 AC2: an empty second field shows Enter both numbers', async ({ page }) => {
-  await page.goto('/');
+  await expect(page.getByRole('status')).toHaveText(emptyFieldMessage);
   await page.getByLabel('First number').fill('2');
   await page.getByRole('button', { name: 'Add' }).click();
-  await expect(page.getByRole('status')).toHaveText('Enter both numbers');
+  await expect(page.getByRole('status')).toHaveText(emptyFieldMessage);
 });
 
-test('#13 AC3: filling both numbers after the message shows 5.00', async ({ page }) => {
+test('Filling both numbers after the empty-field message shows their sum', async ({ page }) => {
   await page.goto('/');
   await page.getByRole('button', { name: 'Add' }).click();
-  await expect(page.getByRole('status')).toHaveText('Enter both numbers');
+  await expect(page.getByRole('status')).toHaveText(emptyFieldMessage);
   await page.getByLabel('First number').fill('2');
   await page.getByLabel('Second number').fill('3');
   await page.getByRole('button', { name: 'Add' }).click();
   await expect(page.getByRole('status')).toHaveText('5.00');
 });
 
-test('#13 AC4: Clear empties the message', async ({ page }) => {
+test('Clear empties the empty-field message', async ({ page }) => {
   await page.goto('/');
   await page.getByRole('button', { name: 'Add' }).click();
-  await expect(page.getByRole('status')).toHaveText('Enter both numbers');
+  await expect(page.getByRole('status')).toHaveText(emptyFieldMessage);
   await page.getByRole('button', { name: 'Clear' }).click();
   await expect(page.getByRole('status')).toHaveText('');
 });

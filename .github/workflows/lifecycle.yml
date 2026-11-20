@@ -14,3 +14,4 @@ permissions:
 jobs:
   gate:
     uses: serio-ngo/serio-focus/.github/workflows/lifecycle-gate.yml@main
+    secrets: inherit
